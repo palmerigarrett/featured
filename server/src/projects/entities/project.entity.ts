@@ -1,3 +1,4 @@
+import { Environment } from 'src/environments/entities/environment.entity';
 import { Flag } from 'src/flags/entities/flags.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -15,8 +16,13 @@ export class Project {
   @Column()
   description: string;
 
-  // need to create an projectKey column
+  @Column({ type: 'uuid', length: 36 })
+  projectKey: string;
 
   @OneToMany(() => Flag, (flag) => flag.projectId)
   flags: Flag[];
+
+  @OneToMany(() => Environment, (environment) => environment.projectId)
+  @Column()
+  environments: Environment[];
 }

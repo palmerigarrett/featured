@@ -1,12 +1,10 @@
 import { IsNotEmpty } from 'class-validator';
 
-export class FlagDto {
+export class EnvironmentDto {
   @IsNotEmpty()
   readonly name: string;
 
   readonly createdAt: Date;
   readonly description: string;
-  readonly isActive: boolean;
   readonly projectId: number;
-  readonly environmentId: string;
 }
