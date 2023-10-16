@@ -17,5 +17,5 @@ export class Environment {
 
   @ManyToOne(() => Project, (project) => project.environments)
   @JoinColumn({ name: 'projectId' }) // This line is added to explicitly create the FK column
-  projectId: Project;
+  projectId: number;
 }

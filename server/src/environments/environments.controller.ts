@@ -19,14 +19,14 @@ export class EnvironmentsController {
     return this.environmentsService.create(createEnvironmentDto);
   }
 
-  @Get()
-  findAll() {
-    return this.environmentsService.findAll();
+  @Get(':projectId')
+  findAll(@Param('projectId') projectId: number) {
+    return this.environmentsService.findAll(projectId);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.environmentsService.findOne(+id);
+    return this.environmentsService.findOne(id);
   }
 
   @Patch(':id')
@@ -34,11 +34,11 @@ export class EnvironmentsController {
     @Param('id') id: string,
     @Body() updateEnvironmentDto: EnvironmentDto,
   ) {
-    return this.environmentsService.update(+id, updateEnvironmentDto);
+    return this.environmentsService.update(id, updateEnvironmentDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.environmentsService.remove(+id);
+    return this.environmentsService.remove(id);
   }
 }
